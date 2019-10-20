@@ -104,6 +104,13 @@ developer.greet();
  	console.log(`Hello ${this.name}`);
  };
 
- const firstHuman = new Human('Jack');
- console.log(firstHuman.name);
- firstHuman.greeting();
+ const Specialist = function(name, skills) {
+ 	Person.apply(this, arguments);
+ 	this.skills = skills || [];
+ };
+Specialist.prototype = Object.create(Person.prototype);
+Specialist.prototype.constructor = Specialist;
+
+const firstHuman = new Human('Jack');
+console.log(firstHuman.name);
+firstHuman.greeting();
